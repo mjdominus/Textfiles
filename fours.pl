@@ -5,6 +5,7 @@ use strict;
 # seen[$n]{$m} records an expression with $n numbers
 # whose value is $m
 my @seen;
+my $TARGET = shift // 24;
 
 my %op = ( '+' => sub { $_[0] + $_[1] },
            '*' => sub { $_[0] * $_[1] },
@@ -23,7 +24,7 @@ scan_seen(1, 3);
 scan_seen(2, 2);
 scan_seen(3, 1);
 
-for my $x (@{$seen[4]{100}}) {
+for my $x (@{$seen[4]{$TARGET}}) {
   printf "%s\n", expr_to_string($x);
 }
 
